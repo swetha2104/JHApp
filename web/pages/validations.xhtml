@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Demo page</title>
+        <link rel="stylesheet" href="resources/css/mainstyle.css" />
+    </h:head>
+    <h:body>
+        <f:view locale="en">
+           
+            <h:form id="fmid">
+                <p:growl id="growl" showDetail="false">
+                </p:growl>
+                <p:panel>
+                    <p:inputText id="name" value="#{myBean.name}" style="width: 206px;margin-top: 5px;height: 18px;" maxlength="10" required="true" requiredMessage="Please enter name">
+                        <f:validateLength minimum="3" maximum="10" for="name" />
+                    </p:inputText><br/>
+                    <p:watermark for="name" value="Name*" /> 
+
+                    <p:inputText id="email" value="#{myBean.email}" style="width: 206px;margin-top: 4px;height: 18px;" required="true" requiredMessage="Please enter Email">
+                        <f:validateRegex pattern="^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$" for="email" />
+                    </p:inputText><br/>
+                    <p:watermark for="email" value="Email*" /> 
+                    <p:inputText id="mn" value="#{myBean.mobileno}" style="width: 206px;margin-top: 4px;height: 18px;" maxlength="10" required="true" requiredMessage="Please enter Mobile number">
+                        
+                    </p:inputText><br/>
+                    <p:watermark for="mn" value="Mobile Number" /> 
+                    <p:selectOneMenu id="city" value="#{myBean.currentcity}" style="width: 212px;margin-top: 4px;margin-bottom: 4px;" required="true" requiredMessage="Please Select current city">
+                        <f:selectItem itemLabel="Current City*" itemValue=""/>
+                        <f:selectItem itemLabel="Bangalore" itemValue="Bangalore"/>
+                        <f:selectItem itemLabel="chennai" itemValue="chennai"/>
+                        <f:selectItem itemLabel="Kochi" itemValue="Kochi"/>
+                    </p:selectOneMenu>
+                    <br/>
+                    <h:outputText value="Educational Details" style="margin-top: 6px;font-weight: bold;" /><br/>
+                    <p:selectOneMenu id="currentdegree" value="#{myBean.currentdegree}" style="width: 212px;margin-top: 4px;" required="true" requiredMessage="Please select degree">
+                        <f:selectItem itemLabel="Current Degree*" itemValue="" />
+                        <f:selectItem itemLabel="B.Tech" itemValue="B.Tech"/>
+                        <f:selectItem itemLabel="BBA" itemValue="BBA"/>
+                    </p:selectOneMenu><br/>
+
+                    <p:inputText  id="yog" value="#{myBean.yog}" style="width: 206px;margin-top: 4px;margin-bottom: 4px;height: 18px;" required="true" requiredMessage="Please enter year of graduation"/><br/>
+                    <p:watermark for="yog" value="Year of Graduation" /> 
+                    <h:outputText value="Educational Preferences" style="margin-top: 4px;font-weight: bold;"/><br/>
+                    <p:selectOneMenu id="course" value="#{myBean.course}" style="width: 212px;margin-top: 4px;margin-bottom: 4px;" required="true" requiredMessage="Please select course">
+                        <f:selectItem itemLabel="Education Interest*" itemValue=""/>
+                        <f:selectItem itemLabel="B.Tech" itemValue="B.Tech"/>
+                        <f:selectItem itemLabel="BBA" itemValue="BBA"/>
+                    </p:selectOneMenu><br/>
+                    <h:selectBooleanCheckbox value="#{myBean.tc}" required="true" >
+                    </h:selectBooleanCheckbox> 
+                    <h:outputText value="I agree to Terms and conditions" style="font-size: 9px;;font-style: italic"/><br/>
+
+                    <p:commandButton value="submit" action="#{myBean.store()}"/>
+                </p:panel>
+            </h:form>
+        </f:view>
+    </h:body>     
+</html>
